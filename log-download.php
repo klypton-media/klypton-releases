@@ -5,6 +5,7 @@ header('Content-Type: application/json');
 // Path to the CSV file
 $csvFile = __DIR__ . '/assets/download-counter.csv';
 
+
 // Get current date and time
 $date = date('Y-m-d');
 $time = date('H:i:s');

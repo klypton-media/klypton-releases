@@ -76,6 +76,7 @@ $emailBody .= "Email: $email\n";
 $emailBody .= "Category: $category\n";
 $emailBody .= "Message:\n$message\n";
 
+
 // Email headers
 $headers = "From: admin@klypton.com\r\n";
 $headers .= "Reply-To: $email\r\n";
