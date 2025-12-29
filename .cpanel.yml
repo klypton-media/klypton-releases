@@ -3,6 +3,9 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/ytsmvnfr/public_html/
     - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp docs.html $DEPLOYPATH
+    - /bin/cp contact.php $DEPLOYPATH
+    - /bin/cp log-download.php $DEPLOYPATH
     - /bin/cp -R css $DEPLOYPATH
     - /bin/cp -R js $DEPLOYPATH
     - /bin/cp -R assets $DEPLOYPATH
