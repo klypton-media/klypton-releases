@@ -1,9 +1,11 @@
 # klypton releases
 
 KLYPTON start screen
+
 <img src="https://klypton.com/assets/img/klypton-app-main-1-1920px.jpg" width="600" alt="Klypton app - Windows">
 
 KLYPTON Studio
+
 <img src="https://klypton.com/assets/img/klypton-studio-1-1920px.jpg" width="600" alt="Klypton app - Windows">
 
 klypton is currently for Windows only.
