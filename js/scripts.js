@@ -147,7 +147,7 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
     // Fetch latest release from GitHub and update download buttons
-    fetch('https://api.github.com/repos/gtkm1/klypton-releases/releases/latest')
+    fetch('https://api.github.com/repos/klypton-media/klypton-releases/releases/latest')
         .then(response => response.json())
         .then(data => {
             const version = data.tag_name; // e.g., "v1.4.26"
