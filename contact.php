@@ -86,55 +86,43 @@ $emailBody .= "Email: $email\r\n";
 $emailBody .= "Category: $category\r\n";
 $emailBody .= "Message:\r\n$message\r\n";
 
-// Send email using SMTP
+// Send email using SMTP (port 587 with STARTTLS)
 $mailSent = false;
 $errorMessage = '';
 
 try {
-    // Create socket connection
-    $socket = @fsockopen('ssl://' . $smtpHost, 465, $errno, $errstr, 30);
-    
+    // Connect to SMTP server on port 587
+    $socket = @fsockopen($smtpHost, $smtpPort, $errno, $errstr, 30);
     if (!$socket) {
-        // Try STARTTLS on port 587
-        $socket = @fsockopen($smtpHost, $smtpPort, $errno, $errstr, 30);
-        if (!$socket) {
-            throw new Exception("Could not connect to SMTP server: $errstr ($errno)");
-        }
-        
-        // Read greeting
-        $response = fgets($socket, 512);
-        if (substr($response, 0, 3) != '220') {
-            throw new Exception("SMTP error: $response");
-        }
-        
-        // Send EHLO
-        fwrite($socket, "EHLO klypton.com\r\n");
-        while ($line = fgets($socket, 512)) {
-            if (substr($line, 3, 1) == ' ') break;
-        }
-        
-        // Start TLS
-        fwrite($socket, "STARTTLS\r\n");
-        $response = fgets($socket, 512);
-        if (substr($response, 0, 3) != '220') {
-            throw new Exception("STARTTLS failed: $response");
-        }
-        
-        // Enable crypto
-        stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
-        
-        // Send EHLO again after STARTTLS
-        fwrite($socket, "EHLO klypton.com\r\n");
-        while ($line = fgets($socket, 512)) {
-            if (substr($line, 3, 1) == ' ') break;
-        }
-    } else {
-        // SSL connection - read greeting and send EHLO
-        $response = fgets($socket, 512);
-        fwrite($socket, "EHLO klypton.com\r\n");
-        while ($line = fgets($socket, 512)) {
-            if (substr($line, 3, 1) == ' ') break;
-        }
+        throw new Exception("Could not connect to SMTP server: $errstr ($errno)");
+    }
+    
+    // Read greeting
+    $response = fgets($socket, 512);
+    if (substr($response, 0, 3) != '220') {
+        throw new Exception("SMTP error: $response");
+    }
+    
+    // Send EHLO
+    fwrite($socket, "EHLO klypton.com\r\n");
+    while ($line = fgets($socket, 512)) {
+        if (substr($line, 3, 1) == ' ') break;
+    }
+    
+    // Start TLS
+    fwrite($socket, "STARTTLS\r\n");
+    $response = fgets($socket, 512);
+    if (substr($response, 0, 3) != '220') {
+        throw new Exception("STARTTLS failed: $response");
+    }
+    
+    // Enable crypto
+    stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+    
+    // Send EHLO again after STARTTLS
+    fwrite($socket, "EHLO klypton.com\r\n");
+    while ($line = fgets($socket, 512)) {
+        if (substr($line, 3, 1) == ' ') break;
     }
     
     // Authenticate
