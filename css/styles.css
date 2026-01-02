@@ -10916,6 +10916,7 @@ html {
 #mainNav .navbar-brand img {
   height: auto;
   max-height: 70px;
+  max-width: calc(100vw - 150px);
   transition: max-height 0.3s ease;
 }
 #mainNav .navbar-nav {
@@ -10989,7 +10990,7 @@ html {
 }
 
 .masthead {
-  padding-top: calc(3rem + 100px);
+  padding-top: calc(5rem + 100px);
   padding-bottom: 2rem;
 }
 .masthead .masthead-heading {

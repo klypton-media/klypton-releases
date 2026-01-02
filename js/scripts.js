@@ -157,6 +157,36 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    // Mobile detection helper
+    const isMobileDevice = () => {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 992;
+    };
+
+    // Portfolio items - on mobile, go directly to YouTube instead of opening modal
+    document.querySelectorAll('.portfolio-item[data-youtube-id]').forEach(item => {
+        item.addEventListener('click', function(e) {
+            if (isMobileDevice()) {
+                e.preventDefault();
+                e.stopPropagation();
+                const youtubeId = this.dataset.youtubeId;
+                if (youtubeId) {
+                    window.location.href = 'https://www.youtube.com/watch?v=' + youtubeId;
+                }
+            }
+        });
+    });
+
+    // Direct download button - on mobile, show warning modal instead of downloading
+    document.querySelectorAll('.download-btn-direct').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            if (isMobileDevice()) {
+                e.preventDefault();
+                const mobileModal = new bootstrap.Modal(document.getElementById('mobileDownloadModal'));
+                mobileModal.show();
+            }
+        });
+    });
+
     // Update footer year to current year
     document.querySelectorAll('.footer-year').forEach(el => {
         el.textContent = new Date().getFullYear();
