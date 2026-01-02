@@ -10990,7 +10990,7 @@ html {
 }
 
 .masthead {
-  padding-top: calc(4rem + 100px);
+  padding-top: calc(3rem + 100px);
   padding-bottom: 2rem;
 }
 .masthead .masthead-heading {
