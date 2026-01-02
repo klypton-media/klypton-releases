@@ -11035,6 +11035,12 @@ html {
     border-radius: 0.5rem;
     overflow: hidden;
 }
+.portfolio .portfolio-item img {
+    width: 100%;
+    aspect-ratio: 480 / 268;
+    object-fit: cover;
+    object-position: center;
+}
 .portfolio .portfolio-item .portfolio-item-caption {
     position: absolute;
     top: 0;
