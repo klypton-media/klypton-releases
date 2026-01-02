@@ -11048,6 +11048,9 @@ html {
   font-size: 2rem;
   padding: 1rem;
 }
+.portfolio-modal .modal-body {
+  padding: 0;
+}
 .portfolio-modal .portfolio-modal-title {
   font-size: 2.25rem;
   line-height: 2rem;

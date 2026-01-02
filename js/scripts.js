@@ -141,6 +141,22 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
+    // Portfolio Modal Video - Load video on open, stop on close
+    document.querySelectorAll('.portfolio-modal').forEach(modal => {
+        modal.addEventListener('shown.bs.modal', function () {
+            const iframe = this.querySelector('iframe[data-src]');
+            if (iframe && iframe.dataset.src) {
+                iframe.src = iframe.dataset.src;
+            }
+        });
+        modal.addEventListener('hidden.bs.modal', function () {
+            const iframe = this.querySelector('iframe');
+            if (iframe) {
+                iframe.src = '';
+            }
+        });
+    });
+
     // Update footer year to current year
     document.querySelectorAll('.footer-year').forEach(el => {
         el.textContent = new Date().getFullYear();
