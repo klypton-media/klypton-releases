@@ -228,9 +228,8 @@ window.addEventListener('DOMContentLoaded', event => {
     // Track download button clicks
     document.querySelectorAll('.download-btn-direct, .download-btn-github').forEach(btn => {
         btn.addEventListener('click', function(e) {
-            fetch('/php/log-download.php', {
-                method: 'POST'
-            }).catch(err => console.log('Download tracking error:', err));
+            // Use sendBeacon for reliable tracking even when navigating away
+            navigator.sendBeacon('/php/log-download.php');
         });
     });
 
