@@ -196,7 +196,7 @@ try {
 
 if ($mailSent) {
     // Log the contact submission
-    $logFile = __DIR__ . '/assets/contact-log.csv';
+    $logFile = __DIR__ . '/../assets/contact-log.csv';
     $logData = [date('Y-m-d'), date('H:i:s'), $name, $email, $category];
     $file = fopen($logFile, 'a');
     if ($file) {

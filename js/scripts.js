@@ -110,7 +110,7 @@ window.addEventListener('DOMContentLoaded', event => {
             errorMessage.classList.add('d-none');
             
             // Send email via fetch to backend endpoint
-            fetch('/contact.php', {
+            fetch('/php/contact.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -228,7 +228,7 @@ window.addEventListener('DOMContentLoaded', event => {
     // Track download button clicks
     document.querySelectorAll('.download-btn-direct, .download-btn-github').forEach(btn => {
         btn.addEventListener('click', function(e) {
-            fetch('/log-download.php', {
+            fetch('/php/log-download.php', {
                 method: 'POST'
             }).catch(err => console.log('Download tracking error:', err));
         });
@@ -245,7 +245,7 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
     // Fetch and display download count
-    fetch('/get-download-count.php')
+    fetch('/php/get-download-count.php')
         .then(response => response.json())
         .then(data => {
             const dlcElement = document.getElementById('dlc');

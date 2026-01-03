@@ -3,7 +3,7 @@
 header('Content-Type: application/json');
 
 // Path to the CSV file
-$csvFile = __DIR__ . '/assets/download-counter.csv';
+$csvFile = __DIR__ . '/../assets/download-counter.csv';
 
 // Check if file exists
 if (!file_exists($csvFile)) {
